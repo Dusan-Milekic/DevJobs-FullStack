@@ -5,32 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Devjob;
 use App\Models\ItemsRole;
 use App\Models\Requirementjob;
+use App\Models\ItemsRequirements;
 use App\Models\Requirementitem;
-use App\Models\Rolejob; // pazi na naziv tabele u ovom modelu
+use App\Models\Rolejob;
 use Inertia\Inertia;
 
 class DevJobController extends Controller
 {
     public function showJobs()
     {
-
         return ['dev_jobs' => Devjob::all()];
     }
 
     public function showJobDetail($id)
     {
+        $job = Devjob::findOrFail($id);
 
-        $job = Devjob::findOrFail($id + 2);
+        $contentRole = Rolejob::where('devjob_id', $id)->value('content');
+        $contentRequirement = Requirementjob::where('devjob_id', $id)->value('content');
 
-        $contentRole = Rolejob::where('devjob_id', $id + 2)->value('content'); // vrati string ili null
-        $contentRequirement = Requirementjob::where('devjob_id', $id + 2)->value('content'); // vrati string ili null
-
-        $itemsRole = ItemsRole::where('rolejob_id', $id + 1)
-            ->pluck('content') // uzima sve vrednosti iz kolone content
+        // Prvo pronađi role_job ID na osnovu devjob_id
+        $roleJobId = Rolejob::where('devjob_id', $id)->value('id');
+        $itemsRole = ItemsRole::where('rolejob_id', $roleJobId)
+            ->pluck('content')
             ->toArray();
 
-        $itemsRequirement = Requirementitem::where('requirementjob_id', $id + 1)
-            ->pluck('content') // uzima sve vrednosti iz kolone content
+        // Prvo pronađi requirement_job ID na osnovu devjob_id
+        $requirementJobId = Requirementjob::where('devjob_id', $id)->value('id');
+        $itemsRequirement = Requirementitem::where('requirementjob_id', $requirementJobId)
+            ->pluck('content')
             ->toArray();
 
         return Inertia::render('jobdetail', [
