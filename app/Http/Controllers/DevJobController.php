@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Devjob;
-use App\Models\ItemsRole;
+use App\Models\Itemsrole;
 use App\Models\Requirementjob;
 use App\Models\ItemsRequirements;
 use App\Models\Requirementitem;
@@ -26,7 +26,7 @@ class DevJobController extends Controller
 
         // Prvo pronađi role_job ID na osnovu devjob_id
         $roleJobId = Rolejob::where('devjob_id', $id)->value('id');
-        $itemsRole = ItemsRole::where('rolejob_id', $roleJobId)
+        $itemsRole = Itemsrole::where('rolejob_id', $roleJobId)
             ->pluck('content')
             ->toArray();
 
