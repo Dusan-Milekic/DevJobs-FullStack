@@ -6,6 +6,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('home');
 })->name('home');
+
 Route::get('/job/{id}', [App\Http\Controllers\DevJobController::class, 'showJobDetail'])
     ->name('devjobs.detail');
 
