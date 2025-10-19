@@ -1,17 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
 @import 'tailwindcss';
 
 @import "tw-animate-css";
-
+@import "tailwindcss-animated";
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 
 @theme {
+
+    --color-neutral-950: rgba(0, 0, 0, 1);
+    --color-neutral-0: rgba(255, 255, 255, 1);
+
+    --color-slate-950: rgba(18, 23, 33, 1);
+    --color-slate-900: rgba(25, 32, 45, 1);
+    --color-slate-500: rgba(110, 128, 152, 1);
+    --color-slate-300: rgba(157, 174, 194, 1);
+    --color-slate-100: rgba(244, 246, 248, 1);
+
+    --color-indigo-500: rgba(89, 104, 224, 1);
+    --color-indigo-300: rgba(147, 155, 244, 1);
+
+
+        /* Preset 1 – Bold */
+    --text-preset-1-font-family: var(--font-sans);
+    --text-preset-1-font-weight: 700;
+    --text-preset-1-font-size: 28px;
+    --text-preset-1-line-height: 120%;
+    --text-preset-1-letter-spacing: 0;
+
+    /* Preset 2 – Bold */
+    --text-preset-2-font-family: var(--font-sans);
+    --text-preset-2-font-weight: 700;
+    --text-preset-2-font-size: 24px;
+    --text-preset-2-line-height: 120%;
+    --text-preset-2-letter-spacing: 0;
+
+    /* Preset 3 – Bold */
+    --text-preset-3-font-family: var(--font-sans);
+    --text-preset-3-font-weight: 700;
+    --text-preset-3-font-size: 20px;
+    --text-preset-3-line-height: 120%;
+    --text-preset-3-letter-spacing: 0;
+
+    /* Preset 4 – SemiBold */
+    --text-preset-4-font-family: var(--font-sans);
+    --text-preset-4-font-weight: 600;
+    --text-preset-4-font-size: 18px;
+    --text-preset-4-line-height: 120%;
+    --text-preset-4-letter-spacing: 0;
+
+    /* Preset 5 – Regular */
+    --text-preset-5-font-family: var(--font-sans);
+    --text-preset-5-font-weight: 400;
+    --text-preset-5-font-size: 16px;
+    --text-preset-5-line-height: 162.5%;
+    --text-preset-5-letter-spacing: 0;
+
+    /* Preset 6 – Bold */
+    --text-preset-6-font-family: var(--font-sans);
+    --text-preset-6-font-weight: 700;
+    --text-preset-6-font-size: 14px;
+    --text-preset-6-line-height: 120%;
+    --text-preset-6-letter-spacing: 0;
+
+    /* Preset 7 – Regular */
+    --text-preset-7-font-family: var(--font-sans);
+    --text-preset-7-font-weight: 400;
+    --text-preset-7-font-size: 14px;
+    --text-preset-7-line-height: 120%;
+    --text-preset-7-letter-spacing: 0;
+
+     /* Spacing scale */
+    --spacing-0: 0px;
+    --spacing-050: 4px;
+    --spacing-075: 6px;
+    --spacing-100: 8px;
+    --spacing-125: 10px;
+    --spacing-150: 12px;
+    --spacing-200: 16px;
+    --spacing-300: 24px;
+    --spacing-375: 30px;
+    --spacing-400: 32px;
+    --spacing-500: 40px;
+    --spacing-550: 44px;
+    --spacing-600: 48px;
+    --spacing-700: 56px;
+
+    --radius-0: 0px;
+    --radius-4: 4px;
+    --radius-6: 6px;
+    --radius-12: 12px;
+    --radius-16: 16px;
+    --radius-40: 40px;
+    --radius-100: 100px;
+
     --font-sans:
-        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-        'Noto Color Emoji';
+        "Kumbh Sans", ui-sans-serif, system-ui, sans-serif;
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -61,76 +149,6 @@
     --color-sidebar-ring: var(--sidebar-ring);
 }
 
-:root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.87 0 0);
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.87 0 0);
-}
-
-.dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.145 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.145 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.985 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.396 0.141 25.723);
-    --destructive-foreground: oklch(0.637 0.237 25.331);
-    --border: oklch(0.269 0 0);
-    --input: oklch(0.269 0 0);
-    --ring: oklch(0.439 0 0);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.985 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(0.269 0 0);
-    --sidebar-ring: oklch(0.439 0 0);
-}
 
 @layer base {
     * {
@@ -138,6 +156,17 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-slate-950;
+        @apply dark:bg-slate-100 dark:text-neutral-0;
+
     }
 }
+body{
+    min-height: 100vh;
+}
+header {
+    background-image: url('/images/mobile/bg-pattern-header.svg');
+    background-size: cover;
+    background-position: center;
+}
+
